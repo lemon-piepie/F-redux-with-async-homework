@@ -2,7 +2,8 @@ const userInfo = (
   state = {
       isFetching:false,
       logged: false,
-      data: null
+      data: null,
+      netError: false
   },
   action
 ) => {
@@ -20,6 +21,10 @@ const userInfo = (
       return {
           ...state, logged: false
       }
+  }if(action.type == 'SIGN_IN_FAIL'){
+    return{
+          ...state, netError: true
+    }
   }
   return state
 }

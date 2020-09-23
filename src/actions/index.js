@@ -32,4 +32,13 @@ export const fetchInfo = () => dispatch => {
     .then( data => { 
       dispatch(fetchInfoReceive(data));
     })
+    .catch( error => {
+      dispatch(failToSignIn())
+    })
+}
+
+const failToSignIn = () => {
+  return {
+    type: 'SIGN_IN_FAIL'
+  }
 }
