@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import loadingImg from '../../assets/loading.jpg';
 import loginFailed from '../../assets/loginFailed.jpg';
+import { connect } from 'react-redux';
+import './index.scss';
 
 class Home extends Component {
   render() {
     return (
       <div className="main-view home">
+      {
+        this.props.info.isFetching?<div className="waiting"><p className="loading">Loading...</p></div> : <span></span>
+      }
         <h2>Practice</h2>
         <p>基于Redux-Data-Flow课程作业，对项目进行Reudx异步数据流改造，以满足以下要求：</p>
         <ol>
@@ -32,4 +37,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = ({ info }) => ({ info })
+
+export default connect(mapStateToProps)(Home);

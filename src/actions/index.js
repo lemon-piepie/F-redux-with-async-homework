@@ -12,3 +12,24 @@ export const clearUserInfo = () => {
     type: 'CLEAR_USER_INFO'
   };
 }
+
+const fetchInfoRequest = () => {
+  return {
+    type: 'FETCH_INFO_REQUEST'
+  }
+}
+const fetchInfoReceive = info => {
+  return {
+    type: 'FETCH_INFO_RECEIVE',
+    payload: info
+  }
+}
+
+export const fetchInfo = () => dispatch => {
+  dispatch(fetchInfoRequest())
+  fetch('https://my-json-server.typicode.com/kevindongzg/demo/login')
+    .then( res => res.json())
+    .then( data => { 
+      dispatch(fetchInfoReceive(data));
+    })
+}
