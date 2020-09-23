@@ -9,7 +9,7 @@ class Home extends Component {
     return (
       <div className="main-view home">
       {
-        this.props.info.isFetching?<div className="waiting"><p className="loading">Loading...</p></div> : <span></span>
+        this.props.userInfo.isFetching?<div className="waiting"><p className="loading">Loading...</p></div> : <span></span>
       }
         <h2>Practice</h2>
         <p>基于Redux-Data-Flow课程作业，对项目进行Reudx异步数据流改造，以满足以下要求：</p>
@@ -37,6 +37,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ info }) => ({ info })
+const mapStateToProps = ({ userInfo }) => ({ userInfo })
 
 export default connect(mapStateToProps)(Home);

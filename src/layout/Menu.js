@@ -15,7 +15,7 @@ class Menu extends Component {
           {this.props.userInfo.logged &&
             modules.map(
               ({ name, path, permissionCode }) =>
-                this.props.userInfo.permissions.includes(permissionCode) && (
+                this.props.userInfo.data.permissions.includes(permissionCode) && (
                   <li className="nav-item" key={name}>
                     <Link to={path}>{name}</Link>
                   </li>

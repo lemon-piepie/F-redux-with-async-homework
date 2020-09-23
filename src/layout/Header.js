@@ -5,6 +5,14 @@ import './Header.scss';
 
 class Header extends Component {
 
+  handleOnClick = () => {
+    if(this.props.userInfo.logged){
+      this.props.handleSignOut()
+    }else{
+      this.props.handleFetchInfo()
+    }
+  }
+
   render() {
     return (
       <header className="header">
@@ -16,7 +24,7 @@ class Header extends Component {
             </>
           )}
 
-          <a className="sign" onClick={this.props.handleFetchInfo}>
+          <a className="sign" onClick={this.handleOnClick}>
             {this.props.userInfo.logged ? 'Sign out' : 'Sign in'}
           </a>
         </div>
@@ -34,6 +42,9 @@ const mapDispatchToProps = dispatch => ({
   handleSignOut: () => clearUserInfo(),
   handleFetchInfo () {
     dispatch(fetchInfo())
+  },
+  handleSignOut () {
+    dispatch(clearUserInfo())
   }
 });
 

@@ -22,7 +22,7 @@ class App extends Component {
               {this.props.userInfo.logged &&
                 modules.map(
                   ({ path, component, permissionCode }) =>
-                    this.props.userInfo.permissions.includes(permissionCode) && (
+                    this.props.userInfo.data.permissions.includes(permissionCode) && (
                       <Route key={path} path={path}>
                         {component}
                       </Route>
